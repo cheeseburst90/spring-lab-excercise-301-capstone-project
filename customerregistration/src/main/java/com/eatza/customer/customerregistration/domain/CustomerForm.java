@@ -1,11 +1,10 @@
 package com.eatza.customer.customerregistration.domain;
 
-import org.springframework.stereotype.Component;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 @Component
 @Getter
@@ -13,15 +12,15 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CustomerForm {
-	
-	private String firstName;
 
-	private String lastName;
+    private String firstName;
 
-	private String foodPreference;
+    private String lastName;
 
-	private String defaultAddress;
+    private String foodPreference;
 
-	private String defaultPaymentMode;
+    private String defaultAddress;
+
+    private String defaultPaymentMode;
 
 }

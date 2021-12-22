@@ -1,22 +1,19 @@
 package com.eatza.order.dto;
 
-import java.util.List;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter @NoArgsConstructor
+import java.util.List;
+
+@Getter
+@Setter
+@NoArgsConstructor
 public class OrderRequestDto {
-	
-	private Long customerId;
-	private Long restaurantId;
-	private List<OrderedItemsDto> items;
 
+    private Long customerId;
+    private Long restaurantId;
+    private List<OrderedItemsDto> items;
 
-	
-	
-	
-	
 
 }

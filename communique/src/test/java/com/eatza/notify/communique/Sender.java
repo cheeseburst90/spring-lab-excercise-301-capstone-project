@@ -18,7 +18,7 @@ public class Sender {
     @Value("${kafka.topic.girishTechie}")
     private String topic;
 
-    public void send(String message){
+    public void send(String message) {
         LOG.info("sending message='{}' to topic='{}'", message, topic);
         kafkaTemplate.send(topic, message);
     }

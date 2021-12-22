@@ -1,6 +1,5 @@
 # springlabexcercise_1
 
-
 # Project Title
 
 Spring lab excercises
@@ -11,11 +10,7 @@ Trigger maven build in each folder and get the targets and un the spring boot co
 
 ### Prerequisites
 
-Maven
-Eclipse
-Git
-Docker
-
+Maven Eclipse Git Docker
 
 ## Authors
 

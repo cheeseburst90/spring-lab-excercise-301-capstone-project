@@ -3,76 +3,76 @@ package com.eatza.order.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RestaurantFetchDto {
 
-	private Long id;
-	private String name;
-	private String location;
-	private String cuisine;
-	private int budget;
-	private double rating;
-	public Long getId() {
-		return id;
-	}
-	
-	public RestaurantFetchDto(Long id, String name, String location, String cuisine, int budget, double rating) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.location = location;
-		this.cuisine = cuisine;
-		this.budget = budget;
-		this.rating = rating;
-	}
+    private Long id;
+    private String name;
+    private String location;
+    private String cuisine;
+    private int budget;
+    private double rating;
 
-	public String getName() {
-		return name;
-	}
+    public RestaurantFetchDto(Long id, String name, String location, String cuisine, int budget, double rating) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.location = location;
+        this.cuisine = cuisine;
+        this.budget = budget;
+        this.rating = rating;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public RestaurantFetchDto() {
+        super();
+    }
 
-	public String getLocation() {
-		return location;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setLocation(String location) {
-		this.location = location;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getCuisine() {
-		return cuisine;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setCuisine(String cuisine) {
-		this.cuisine = cuisine;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public int getBudget() {
-		return budget;
-	}
+    public String getLocation() {
+        return location;
+    }
 
-	public void setBudget(int budget) {
-		this.budget = budget;
-	}
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
-	public double getRating() {
-		return rating;
-	}
+    public String getCuisine() {
+        return cuisine;
+    }
 
-	public void setRating(double rating) {
-		this.rating = rating;
-	}
+    public void setCuisine(String cuisine) {
+        this.cuisine = cuisine;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public int getBudget() {
+        return budget;
+    }
 
-	public RestaurantFetchDto() {
-		super();
-	}
+    public void setBudget(int budget) {
+        this.budget = budget;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
 
 }

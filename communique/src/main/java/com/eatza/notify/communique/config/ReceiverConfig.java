@@ -1,8 +1,5 @@
 package com.eatza.notify.communique.config;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,13 +12,16 @@ import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @EnableKafka
 @Configuration
 public class ReceiverConfig {
 
     @Value("${kafka.bootstrap.servers}")
     private String bootstrapServers;
-    
+
     @Value("${zookeeper.groupId}")
     private String groupId;
 

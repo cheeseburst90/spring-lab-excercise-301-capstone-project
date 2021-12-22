@@ -10,13 +10,13 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 public class OrderingserviceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(OrderingserviceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(OrderingserviceApplication.class, args);
+    }
 
-	@Bean("restTemplate")
-	public RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
+    @Bean("restTemplate")
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 
 }

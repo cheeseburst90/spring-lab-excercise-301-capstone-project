@@ -9,19 +9,16 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 
-
 @RestControllerAdvice
-public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler{
-	
-	private static final Logger logger = LoggerFactory.getLogger(CustomGlobalExceptionHandler.class);
+public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-	@ExceptionHandler(OrderException.class)
-	public ResponseEntity<Object> exception(OrderException exception) {
-		logger.debug("Handling OrderException");
-		 return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
-	}
+    private static final Logger logger = LoggerFactory.getLogger(CustomGlobalExceptionHandler.class);
 
-	
-	
-	
+    @ExceptionHandler(OrderException.class)
+    public ResponseEntity<Object> exception(OrderException exception) {
+        logger.debug("Handling OrderException");
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+
 }

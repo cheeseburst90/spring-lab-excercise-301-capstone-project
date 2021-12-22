@@ -10,13 +10,13 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 public class CustomerregistrationApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CustomerregistrationApplication.class, args);
-	}
-	
-	@Bean("restTemplate")
-	public RestTemplate restTemplate() {
-	    return new RestTemplate();
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CustomerregistrationApplication.class, args);
+    }
+
+    @Bean("restTemplate")
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 
 }

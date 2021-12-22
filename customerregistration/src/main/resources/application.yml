@@ -8,7 +8,7 @@ management:
   endpoints:
     web:
       exposure:
-       include:refresh
+        include:refresh
 server:
   port: 8084
 spring:
