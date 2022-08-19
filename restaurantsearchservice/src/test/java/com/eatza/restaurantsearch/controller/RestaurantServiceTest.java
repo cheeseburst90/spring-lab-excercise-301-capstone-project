@@ -1,7 +1,7 @@
 package com.eatza.restaurantsearch.controller;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static  org.mockito.ArgumentMatchers.any;
 import static  org.mockito.ArgumentMatchers.anyDouble;
 import static  org.mockito.ArgumentMatchers.anyInt;
@@ -14,10 +14,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -34,7 +36,7 @@ import com.eatza.restaurantsearch.service.menuitemservice.MenuItemService;
 import com.eatza.restaurantsearch.service.menuservice.MenuService;
 import com.eatza.restaurantsearch.service.restaurantservice.RestaurantServiceImpl;
 
-@RunWith(SpringRunner.class)
+@SpringBootTest
 public class RestaurantServiceTest {
 
 
@@ -197,12 +199,12 @@ public class RestaurantServiceTest {
 		assertEquals("Dominos", rest.getName());
 	}
 	
-	@Test(expected = RestaurantNotFoundException.class)
+	@Test
 	public void findById_empty() {
 		when(restaurantRepository.findById(anyLong()))
 			.thenReturn(Optional.empty());
 		
-		Restaurant rest = restaurantService.findById(1L);
+		Assertions.assertThrows(RestaurantNotFoundException.class,()->restaurantService.findById(1L));
 	}
 	
 	
@@ -221,7 +223,7 @@ public class RestaurantServiceTest {
 		assertEquals("Dosa", menuItems2.get(0).getName());
 		
 	}
-	@Test(expected=RestaurantNotFoundException.class)
+	@Test
 	public void findMenuItemByRestaurantId_expection() {
 		List<MenuItem> menuItems = new ArrayList<>();;
 		Page<MenuItem> page = new PageImpl<>(menuItems);

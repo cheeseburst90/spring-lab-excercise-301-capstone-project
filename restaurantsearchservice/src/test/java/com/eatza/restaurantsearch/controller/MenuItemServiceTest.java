@@ -1,7 +1,8 @@
 package com.eatza.restaurantsearch.controller;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static  org.mockito.ArgumentMatchers.any;
 import static  org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
@@ -11,22 +12,22 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.eatza.restaurantsearch.dto.ItemRequestDto;
 import com.eatza.restaurantsearch.exception.ItemNotFoundException;
 import com.eatza.restaurantsearch.exception.MenuNotSavedException;
 import com.eatza.restaurantsearch.exception.RestaurantBadRequestException;
-import com.eatza.restaurantsearch.exception.RestaurantNotFoundException;
 import com.eatza.restaurantsearch.model.Menu;
 import com.eatza.restaurantsearch.model.MenuItem;
 import com.eatza.restaurantsearch.model.Restaurant;
@@ -35,8 +36,8 @@ import com.eatza.restaurantsearch.service.menuitemservice.MenuItemServiceImpl;
 import com.eatza.restaurantsearch.service.menuservice.MenuService;
 import com.eatza.restaurantsearch.service.restaurantservice.RestaurantService;
 
-@RunWith(SpringRunner.class)
-public class MenuItemServiceTest {
+@SpringBootTest
+class MenuItemServiceTest {
 	
 	@InjectMocks
 	private MenuItemServiceImpl menuItemService;
@@ -77,8 +78,8 @@ public class MenuItemServiceTest {
 	
 	}
 	
-	@Test(expected= RestaurantBadRequestException.class)
-	public void findByNameOfRestaurant_empty() throws ItemNotFoundException {
+	@Test
+	void findByNameOfRestaurant_empty() throws ItemNotFoundException {
 		MenuItem menuItem = new MenuItem();
 		menuItem.setDescription("Dosa");
 		menuItem.setId(1L);
@@ -100,11 +101,11 @@ public class MenuItemServiceTest {
 		when(menuItemRepository.findByNameContaining(any(String.class), any(Pageable.class))).thenReturn(page);
 		when(menuService.getMenuById(anyLong())).thenReturn(Optional.empty());
 		
-		menuItemService.findByName("Dominos",1,10);
+		Assertions.assertThrows(RestaurantBadRequestException.class, ()->menuItemService.findByName("Dominos",1,10));
 	
 	}
 	
-	@Test(expected=ItemNotFoundException.class)
+	@Test
 	public void findByNameOfRestaurant_exception() throws ItemNotFoundException {
 		MenuItem menuItem = new MenuItem();
 		menuItem.setDescription("Dosa");
@@ -124,7 +125,7 @@ public class MenuItemServiceTest {
 		when(menuItemRepository.findByNameContaining(any(String.class), any(Pageable.class))).thenReturn(Mockito.mock(Page.class));
 		when(menuService.getMenuById(anyLong())).thenReturn(optionalMenu);
 		
-		List<Restaurant> restaurantsToReturn =  menuItemService.findByName("Dominos",1,10);
+		Assertions.assertThrows(ItemNotFoundException.class, ()->menuItemService.findByName("Dominos",1,10));
 		
 
 		
@@ -157,7 +158,7 @@ public class MenuItemServiceTest {
 		
 	}
 	
-	@Test(expected=MenuNotSavedException.class)
+	@Test
 	public void saveMenuItem_error() {
 		MenuItem menuItem = new MenuItem();
 		menuItem.setDescription("Dosa");
@@ -177,8 +178,7 @@ public class MenuItemServiceTest {
 		when(menuService.getMenuById(anyLong())).thenReturn(Optional.empty());
 		menuItem.setMenu(optionalMenu.get());
 		when(menuItemRepository.save(any(MenuItem.class))).thenReturn(menuItem);
-		MenuItem savedItem = menuItemService.saveMenuItem(dto);
-		assertNotNull(savedItem);
+		Assertions.assertThrows(MenuNotSavedException.class, ()->menuItemService.saveMenuItem(dto));
 		
 	}
 	
