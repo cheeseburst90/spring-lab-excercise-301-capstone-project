@@ -1,5 +1,5 @@
 # Start with a base image containing Java runtime
-FROM openjdk:11.0.16-jdk
+FROM java:openjdk-8
 
 # Add Maintainer Info
 LABEL maintainer="bharath.giri@me.com"
